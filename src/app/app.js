@@ -11,6 +11,10 @@ import { HashCommand } from '#app/commands/system/hash.command.js';
 import { CatCommand } from '#app/commands/file/cat.command.js';
 import { AddCommand } from '#app/commands/file/add.command.js';
 import { CopyCommand } from '#app/commands/file/cp.command.js';
+import { OsCommand } from '#app/commands/system/osinfo.command.js';
+import { MkdirCommand } from '#app/commands/file/mkdir.command.js';
+import { RenameCommand } from '#app/commands/file/rn.command.js';
+import { OsService } from '#domain/services/os-service.js';
 
 class App {
   start() {
@@ -18,6 +22,7 @@ class App {
       fileService: new FileService(),
       errorService: new ErrorService(),
       hashService: new HashService(),
+      osService: new OsService(),
     };
 
     const commands = {
@@ -30,6 +35,9 @@ class App {
       cat: new CatCommand(services),
       add: new AddCommand(services),
       cp: new CopyCommand(services),
+      os: new OsCommand(services),
+      mkdir: new MkdirCommand(services),
+      rn: new RenameCommand(services),
     };
 
     const router = new CommandRouter(commands, services.errorService);

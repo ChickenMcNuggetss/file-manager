@@ -63,4 +63,12 @@ export class FileService {
   async open(path) {
     return await this.fsAdapter.open(path);
   }
+
+  /**
+   * @param {string} oldName
+   * @param {string} newName
+   */
+  async rename(oldName, newName) {
+    return await this.fsAdapter.rename(oldName, newName);
+  }
 }

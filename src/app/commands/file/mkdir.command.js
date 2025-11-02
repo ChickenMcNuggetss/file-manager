@@ -13,6 +13,6 @@ export class MkdirCommand{
    * @param {string} args
    */
   async execute(args) {
-    return await this.fsService.cp(args[0]);
+    return await this.fsService.mkdir(args[0]);
   }
 }

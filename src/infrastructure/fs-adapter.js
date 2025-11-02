@@ -1,8 +1,7 @@
 import { Stats, createReadStream, createWriteStream } from 'fs';
-import { readdir, stat, rm, open } from 'node:fs/promises';
+import { readdir, stat, rm, open, mkdir, rename } from 'node:fs/promises';
 
 export class FileSystemAdapter {
-
   /**
    * @param {import("fs").PathLike} path
    */
@@ -27,15 +26,15 @@ export class FileSystemAdapter {
 
   /**
    * @param {import("fs").PathLike} path
-   * @param {BufferEncoding} encoding 
+   * @param {BufferEncoding} encoding
    */
   createReadStream(path, encoding) {
     return createReadStream(path, encoding);
   }
 
-    /**
+  /**
    * @param {import("fs").PathLike} path
-   * @param {BufferEncoding} encoding 
+   * @param {BufferEncoding} encoding
    */
   createWriteStream(path, encoding) {
     return createWriteStream(path, encoding);
@@ -48,7 +47,18 @@ export class FileSystemAdapter {
     return await open(path, 'w');
   }
 
+  /**
+   * @param {import("fs").PathLike} path
+   */
   async mkdir(path) {
+    return await mkdir(path, { recursive: true });
+  }
 
+  /**
+   * @param {string} oldName
+   * @param {string} newName
+   */
+  async rename(oldName, newName) {
+    return await rename(oldName, newName);
   }
 }
