@@ -20,12 +20,12 @@ export class ListCommand {
       const dir = [];
       for (const entity of entities) {
         const entityPath = path.resolve(entity);
-        /**
-         * @param {Stats} entityInfo
-         */
-        let entityInfo;
+
         try {
-          entityInfo = await this.fsService.stat(entityPath);
+          /**
+           * @param {Stats} entityInfo
+           */
+          const entityInfo = await this.fsService.stat(entityPath);
           if (entityInfo.isFile()) {
             files.push({ name: entity, type: 'file' });
           } else if (entityInfo.isDirectory()) {
@@ -62,7 +62,7 @@ export class ListCommand {
   }
 
   /**
-   * @param {any} value
+   * @param {unknown} value
    */
   getIndentedString(value) {
     const cellLength = 20;

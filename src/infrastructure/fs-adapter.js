@@ -1,4 +1,4 @@
-import { Stats } from 'node:fs';
+import { Stats, createReadStream } from 'fs';
 import { readdir, stat, rm } from 'node:fs/promises';
 
 export class FileSystemAdapter {
@@ -23,5 +23,13 @@ export class FileSystemAdapter {
    */
   async remove(path) {
     return await rm(path);
+  }
+
+  /**
+   * @param {import("fs").PathLike} path
+   * @param {BufferEncoding} encoding 
+   */
+  createReadStream(path, encoding) {
+    return createReadStream(path, encoding);
   }
 }

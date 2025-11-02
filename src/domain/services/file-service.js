@@ -31,13 +31,21 @@ export class FileService {
    * @param {import("fs").PathLike} path
    */
   async stat(path) {
-   return await this.fsAdapter.stat(path);
+    return await this.fsAdapter.stat(path);
   }
 
-    /**
+  /**
    * @param {import("fs").PathLike} path
    */
   async remove(path) {
-   return await this.fsAdapter.remove(path);
+    return await this.fsAdapter.remove(path);
+  }
+
+  /**
+   * @param {import("fs").PathLike} path
+   * @param {BufferEncoding} encoding
+   */
+  createReadStream(path, encoding) {
+    return this.fsAdapter.createReadStream(path, encoding);
   }
 }

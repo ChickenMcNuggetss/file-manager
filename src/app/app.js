@@ -6,12 +6,16 @@ import { ExitCommand } from '#app/commands/navigation/exit.command.js';
 import { ListCommand } from '#app/commands/navigation/ls.command.js';
 import { UpCommand } from '#app/commands/navigation/up.command.js';
 import { RemoveCommand } from '#app/commands/file/rm.command.js';
+import { HashService } from '#domain/services/hash-service.js';
+import { HashCommand } from '#app/commands/system/hash.command.js';
+import { CatCommand } from '#app/commands/file/cat.command.js';
 
 class App {
   start() {
     const services = {
       fileService: new FileService(),
       errorService: new ErrorService(),
+      hashService: new HashService(),
     };
 
     const commands = {
@@ -20,6 +24,8 @@ class App {
       '.exit': new ExitCommand(),
       ls: new ListCommand(services),
       rm: new RemoveCommand(services),
+      hash: new HashCommand(services),
+      cat: new CatCommand(services),
     };
 
     const router = new CommandRouter(commands, services.errorService);
