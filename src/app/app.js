@@ -9,6 +9,8 @@ import { RemoveCommand } from '#app/commands/file/rm.command.js';
 import { HashService } from '#domain/services/hash-service.js';
 import { HashCommand } from '#app/commands/system/hash.command.js';
 import { CatCommand } from '#app/commands/file/cat.command.js';
+import { AddCommand } from '#app/commands/file/add.command.js';
+import { CopyCommand } from '#app/commands/file/cp.command.js';
 
 class App {
   start() {
@@ -26,6 +28,8 @@ class App {
       rm: new RemoveCommand(services),
       hash: new HashCommand(services),
       cat: new CatCommand(services),
+      add: new AddCommand(services),
+      cp: new CopyCommand(services),
     };
 
     const router = new CommandRouter(commands, services.errorService);

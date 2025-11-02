@@ -10,9 +10,10 @@ export class CatCommand {
   }
 
   /**
-   * @param {import("fs").PathLike} path
+   * @param {string[]} args
    */
-  async execute(path) {
+  async execute(args) {
+    const path = args[0];
     return await this.fsService.createReadStream(path, 'ascii').on('data',
       /**
        * @param {string | Buffer<ArrayBufferLike>} chunk 

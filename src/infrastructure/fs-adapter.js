@@ -1,5 +1,5 @@
-import { Stats, createReadStream } from 'fs';
-import { readdir, stat, rm } from 'node:fs/promises';
+import { Stats, createReadStream, createWriteStream } from 'fs';
+import { readdir, stat, rm, open } from 'node:fs/promises';
 
 export class FileSystemAdapter {
 
@@ -31,5 +31,24 @@ export class FileSystemAdapter {
    */
   createReadStream(path, encoding) {
     return createReadStream(path, encoding);
+  }
+
+    /**
+   * @param {import("fs").PathLike} path
+   * @param {BufferEncoding} encoding 
+   */
+  createWriteStream(path, encoding) {
+    return createWriteStream(path, encoding);
+  }
+
+  /**
+   * @param {import("fs").PathLike} path
+   */
+  async open(path) {
+    return await open(path, 'w');
+  }
+
+  async mkdir(path) {
+
   }
 }

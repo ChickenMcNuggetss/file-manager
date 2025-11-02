@@ -6,9 +6,10 @@ export class CdCommand {
   }
 
   /**
-   * @param {string} path
+   * @param {string[]} args
    */
-  async execute(path) {
+  async execute(args) {
+    const path = args[0];
     return process.chdir(path);
   }
 }

@@ -7,7 +7,11 @@ export class RemoveCommand {
     this.fsService = services.fileService;
   }
 
-  async execute(path) {
+  /**
+   * @param {string[]} args
+   */
+  async execute(args) {
+    const path = args[0];
     return await this.fsService.remove(path);
   }
 }

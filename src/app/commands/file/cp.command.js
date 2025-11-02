@@ -1,21 +1,19 @@
-import { FileService } from "#domain/services/file-service.js";
+import { FileService } from '#domain/services/file-service.js';
 
-export class CopyCommand{
-
+export class CopyCommand {
   /**
-   * 
-   * @param {{[key: string]: any}} services 
+   * @param {{[key: string]: any}} services
    */
   constructor(services) {
-    console.log(services);
-    this.fsService = services.fsService;
+    this.fsService = services.fileService;
   }
 
   /**
-   * @param {string} args
+   * @param {string[]} args
    */
   async execute(args) {
-    return await this.fsService.cp(args);
+    const readStream = this.fsService.createReadStream(args[0]);
+    const writeStream = this.fsService.createWriteStream(args[1]);
+    readStream.pipe(writeStream);
   }
-
 }

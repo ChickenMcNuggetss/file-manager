@@ -48,4 +48,19 @@ export class FileService {
   createReadStream(path, encoding) {
     return this.fsAdapter.createReadStream(path, encoding);
   }
+
+  /**
+   * @param {import("fs").PathLike} path
+   * @param {BufferEncoding} encoding
+   */
+  createWriteStream(path, encoding) {
+    return this.fsAdapter.createWriteStream(path, encoding);
+  }
+
+  /**
+   * @param {import("fs").PathLike} path
+   */
+  async open(path) {
+    return await this.fsAdapter.open(path);
+  }
 }

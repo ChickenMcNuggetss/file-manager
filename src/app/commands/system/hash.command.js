@@ -8,9 +8,10 @@ export class HashCommand {
   }
 
   /**
-   * @param {import("fs").PathLike} path
+   * @param {string[]} args
    */
-  async execute(path) {
+  async execute(args) {
+    const path = args[0];
     const hash = this.hashService.createHash();
     const stream = await this.fsService.createReadStream(path, 'utf-8');
     stream.on('data', (/** @type {Buffer | string} */ chunk) => {
