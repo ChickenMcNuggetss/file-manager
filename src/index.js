@@ -1,6 +1,7 @@
 import process from 'process';
+import { bootstrap } from '#app/bootstrap.js';
 
-import("#app/bootstrap.js").catch((err) => {
+bootstrap().catch((err) => {
   console.error(err);
   process.exit(1);
 });

@@ -22,7 +22,7 @@ export class CommandRouter {
     }
 
     try {
-      await command.execute(args)
+      await command.execute(args[0])
     } catch(error) {
       console.log(`Error: ${error}`);
     }

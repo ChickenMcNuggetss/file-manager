@@ -1,21 +1,27 @@
-import { rm, readdir } from 'node:fs/promises';
+import { Stats } from 'node:fs';
+import { readdir, stat, rm } from 'node:fs/promises';
 
 export class FileSystemAdapter {
+
   /**
-   * @param {string} path
+   * @param {import("fs").PathLike} path
    */
-  async remove(path) {
-    try {
-      await rm(path);
-    } catch(e) {
-      console.log(e);
-    }
+  async readdir(path) {
+    return await readdir(path);
   }
 
   /**
-   * @param {import("fs").PathLike} dir
+   * @param {import("fs").PathLike} path
+   * @returns {Promise<Stats>}
    */
-  async readdir(dir) {
-    return readdir(dir);
+  async stat(path) {
+    return await stat(path);
+  }
+
+  /**
+   * @param {import("fs").PathLike} path
+   */
+  async remove(path) {
+    return await rm(path);
   }
 }

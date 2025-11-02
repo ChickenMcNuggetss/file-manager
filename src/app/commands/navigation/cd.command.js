@@ -1,13 +1,14 @@
-import { BaseCommand } from "../base-command";
+import { FileService } from '#domain/services/file-service.js';
+import process from 'process';
 
-class CdCommand extends BaseCommand {
-
+export class CdCommand {
   constructor() {
-    super()
   }
 
-  async execute(args) {
-    return {}
+  /**
+   * @param {string} path
+   */
+  async execute(path) {
+    return process.chdir(path);
   }
-
 }
