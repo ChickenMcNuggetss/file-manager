@@ -6,7 +6,7 @@ export class MkdirCommand{
    * @param {{[key: string]: any}} services 
    */
   constructor(services) {
-    this.fsService = services.fsService;
+    this.fsService = services.fileService;
   }
 
   /**

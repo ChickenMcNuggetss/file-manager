@@ -14,7 +14,7 @@ export class CatCommand {
    */
   async execute(args) {
     const path = args[0];
-    return await this.fsService.createReadStream(path, 'ascii').on('data',
+    return this.fsService.createReadStream(path, 'ascii').on('data',
       /**
        * @param {string | Buffer<ArrayBufferLike>} chunk 
        */
