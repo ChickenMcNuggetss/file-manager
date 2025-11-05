@@ -1,0 +1,38 @@
+{
+  "name": "file-manager",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/index.js",
+    "lint": "eslint ./src",
+    "format": "prettier --write .",
+    "ci:format": "prettier --check ."
+  },
+    "imports": {
+      "#/*": "./src/*",
+      "#app/*": "./src/app/*",
+      "#domain/*": "./src/domain/*",
+      "#infrastructure/*": "./src/infrastructure/*",
+      "#shared/*": "./src/shared/*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ChickenMcNuggetss/file-manager.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/ChickenMcNuggetss/file-manager/issues"
+  },
+  "homepage": "https://github.com/ChickenMcNuggetss/file-manager#readme",
+  "devDependencies": {
+    "@eslint/js": "^9.39.0",
+    "eslint": "^9.39.0",
+    "globals": "^16.5.0",
+    "prettier": "3.6.2"
+  }
+}
